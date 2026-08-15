@@ -5,10 +5,10 @@ export default function Hero() {
       className="flex min-h-[80vh] scroll-mt-16 flex-col items-start justify-center gap-6 px-6"
     >
       <h1 className="text-5xl font-bold tracking-tight text-zinc-900 sm:text-6xl">
-        Your Name
+        Muhammad Hasham Hussain
       </h1>
       <p className="max-w-xl text-xl text-zinc-600">
-        Data Scientist — [one-line tagline about what you do].
+        Data Science & Machine Learning
       </p>
       <a
         href="#projects"
