@@ -6,7 +6,6 @@ type SkillGroup = {
 const skillGroups: SkillGroup[] = [
   { category: "Languages", items: ["Python", "SQL", "R"] },
   { category: "ML / Data Science", items: ["scikit-learn", "PyTorch", "pandas"] },
-  { category: "Data Engineering", items: ["Airflow", "Spark", "dbt"] },
   { category: "Visualization", items: ["Matplotlib", "Tableau", "Plotly"] },
 ];
 

@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Your Name — Data Scientist",
-  description: "Portfolio of [Your Name], a data scientist working on [focus area].",
+  title: "Muhammad Hasham Hussain — Data Science & Machine Learning",
+  description:
+    "Portfolio of Muhammad Hasham Hussain, a data science graduate student working on machine learning and analytics projects.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
