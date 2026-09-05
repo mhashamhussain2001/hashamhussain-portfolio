@@ -9,9 +9,30 @@ type Project = {
   tags: string[];
   links: ProjectLink[];
   embedSrc?: string;
+  image?: { src: string; alt: string };
 };
 
 const projects: Project[] = [
+  {
+    title: "shadenav — Shade-Aware Pedestrian Routing",
+    description:
+      "A routing tool that models where building shadows fall at any date and time, scores every street segment by sun exposure, and finds walking routes that trade a little extra distance for a lot less time in direct sun. Built on an end-to-end geospatial pipeline over the Chico State campus: OpenStreetMap street networks and building footprints, sun-position modeling, shadow-casting geometry, and shade-weighted shortest-path routing. Validated across 200 routes — a mild shade preference cuts sun exposure by roughly 20% for about 2% extra distance.",
+    tags: ["Python", "pvlib", "NetworkX", "OpenStreetMap", "Geospatial"],
+    links: [
+      {
+        label: "Live demo",
+        href: "https://shadenav.streamlit.app",
+      },
+      {
+        label: "GitHub repo",
+        href: "https://github.com/Prabin-Hasham/shadenav",
+      },
+    ],
+    image: {
+      src: "/images/shadenav.png",
+      alt: "shadenav map showing a shortest route and a shadier alternate route between two campus points, with a sun-exposure comparison panel",
+    },
+  },
   {
     title: "Keyword vs. Meaning Search",
     description:
@@ -65,6 +86,14 @@ export default function Projects() {
             <h3 className="text-lg font-semibold text-foreground">
               {project.title}
             </h3>
+            {project.image && (
+              <img
+                src={project.image.src}
+                alt={project.image.alt}
+                loading="lazy"
+                className="w-full rounded-lg border border-border"
+              />
+            )}
             <p className="text-sm leading-6 text-muted">
               {project.description}
             </p>
