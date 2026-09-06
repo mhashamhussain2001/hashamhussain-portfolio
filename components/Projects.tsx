@@ -84,7 +84,21 @@ export default function Projects() {
             className="flex flex-col gap-3 rounded-xl border border-border p-6 transition-colors hover:border-border-strong"
           >
             <h3 className="text-lg font-semibold text-foreground">
-              {project.title}
+              {(() => {
+                const demo = project.links.find((link) => link.label === "Live demo");
+                return demo ? (
+                  <a
+                    href={demo.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-accent-blue"
+                  >
+                    {project.title}
+                  </a>
+                ) : (
+                  project.title
+                );
+              })()}
             </h3>
             {project.image && (
               <img
