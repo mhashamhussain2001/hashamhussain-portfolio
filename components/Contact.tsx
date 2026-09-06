@@ -7,7 +7,7 @@ const links = [
 export default function Contact() {
   return (
     <section id="contact" className="scroll-mt-16 px-6 py-24">
-      <h2 className="text-3xl font-bold text-foreground">Contact</h2>
+      <h2 className="font-display text-3xl font-bold text-foreground">Contact</h2>
       <p className="mt-6 max-w-xl text-lg leading-8 text-muted">
         Open to data science and ML roles. Feel free to reach out.
       </p>

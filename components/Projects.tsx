@@ -76,29 +76,28 @@ const projects: Project[] = [
 export default function Projects() {
   return (
     <section id="projects" className="scroll-mt-16 px-6 py-24">
-      <h2 className="text-3xl font-bold text-foreground">Projects</h2>
-      <div className="mt-10 flex flex-col gap-6">
-        {projects.map((project) => (
+      <h2 className="font-display text-3xl font-bold text-foreground">Projects</h2>
+      <div className="mt-10 grid items-start gap-6 md:grid-cols-2">
+        {projects.map((project) => {
+          const demo = project.links.find((link) => link.label === "Live demo");
+          return (
           <div
             key={project.title}
-            className="flex flex-col gap-3 rounded-xl border border-border p-6 transition-colors hover:border-border-strong"
+            className="flex flex-col gap-3 border-t-2 border-t-accent-blue bg-panel p-6"
           >
-            <h3 className="text-lg font-semibold text-foreground">
-              {(() => {
-                const demo = project.links.find((link) => link.label === "Live demo");
-                return demo ? (
-                  <a
-                    href={demo.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-accent-blue"
-                  >
-                    {project.title}
-                  </a>
-                ) : (
-                  project.title
-                );
-              })()}
+            <h3 className="font-display text-lg font-semibold text-foreground">
+              {demo ? (
+                <a
+                  href={demo.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-accent-blue"
+                >
+                  {project.title}
+                </a>
+              ) : (
+                project.title
+              )}
             </h3>
             {project.image && (
               <img
@@ -115,7 +114,7 @@ export default function Projects() {
               {project.tags.map((tag) => (
                 <li
                   key={tag}
-                  className="rounded-full bg-panel px-3 py-1 text-xs font-medium text-muted"
+                  className="rounded-sm bg-background px-2 py-1 font-mono text-xs text-muted"
                 >
                   {tag}
                 </li>
@@ -146,7 +145,8 @@ export default function Projects() {
               </div>
             )}
           </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );

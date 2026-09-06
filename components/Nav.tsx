@@ -8,8 +8,8 @@ const links = [
 export default function Nav() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur">
-      <nav className="mx-auto flex max-w-3xl items-center justify-between px-6 py-4">
-        <a href="#hero" className="font-semibold text-foreground">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <a href="#" className="font-display font-semibold text-foreground">
           Muhammad Hasham Hussain
         </a>
         <ul className="flex gap-6 text-sm font-medium text-muted">
