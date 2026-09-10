@@ -1,3 +1,6 @@
+import Image from "next/image";
+import Reveal from "@/components/Reveal";
+
 type ProjectLink = {
   label: string;
   href: string;
@@ -9,7 +12,7 @@ type Project = {
   tags: string[];
   links: ProjectLink[];
   embedSrc?: string;
-  image?: { src: string; alt: string };
+  image?: { src: string; alt: string; width: number; height: number };
 };
 
 const projects: Project[] = [
@@ -31,6 +34,8 @@ const projects: Project[] = [
     image: {
       src: "/images/shadenav.png",
       alt: "shadenav map showing a shortest route and a shadier alternate route between two campus points, with a sun-exposure comparison panel",
+      width: 1380,
+      height: 810,
     },
   },
   {
@@ -76,75 +81,83 @@ const projects: Project[] = [
 export default function Projects() {
   return (
     <section id="projects" className="scroll-mt-16 px-6 py-24">
-      <h2 className="font-display text-3xl font-bold text-foreground">Projects</h2>
+      <Reveal>
+        <h2 className="font-display text-3xl font-bold tracking-tight text-foreground">
+          Projects
+        </h2>
+      </Reveal>
       <div className="mt-10 grid items-start gap-6 md:grid-cols-2">
-        {projects.map((project) => {
+        {projects.map((project, index) => {
           const demo = project.links.find((link) => link.label === "Live demo");
+          const accent = index % 2 === 0 ? "border-t-accent-blue" : "border-t-accent-orange";
           return (
-          <div
-            key={project.title}
-            className="flex flex-col gap-3 border-t-2 border-t-accent-blue bg-panel p-6"
-          >
-            <h3 className="font-display text-lg font-semibold text-foreground">
-              {demo ? (
-                <a
-                  href={demo.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-accent-blue"
-                >
-                  {project.title}
-                </a>
-              ) : (
-                project.title
-              )}
-            </h3>
-            {project.image && (
-              <img
-                src={project.image.src}
-                alt={project.image.alt}
-                loading="lazy"
-                className="w-full rounded-lg border border-border"
-              />
-            )}
-            <p className="text-sm leading-6 text-muted">
-              {project.description}
-            </p>
-            <ul className="flex flex-wrap gap-2">
-              {project.tags.map((tag) => (
-                <li
-                  key={tag}
-                  className="rounded-sm bg-background px-2 py-1 font-mono text-xs text-muted"
-                >
-                  {tag}
-                </li>
-              ))}
-            </ul>
-            <ul className="flex flex-wrap gap-4 text-sm font-medium">
-              {project.links.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-accent-blue underline underline-offset-4 hover:text-foreground"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            {project.embedSrc && (
-              <div className="mt-4 w-full overflow-hidden rounded-lg border border-border">
-                <iframe
-                  src={project.embedSrc}
-                  title={`${project.title} — Tableau dashboard`}
-                  loading="lazy"
-                  className="h-[650px] w-full border-0"
-                />
+            <Reveal key={project.title}>
+              <div
+                className={`flex h-full flex-col gap-3 border-t-2 ${accent} bg-panel p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg`}
+              >
+                <h3 className="font-display text-lg font-semibold text-foreground">
+                  {demo ? (
+                    <a
+                      href={demo.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-accent-blue"
+                    >
+                      {project.title}
+                    </a>
+                  ) : (
+                    project.title
+                  )}
+                </h3>
+                {project.image && (
+                  <Image
+                    src={project.image.src}
+                    alt={project.image.alt}
+                    width={project.image.width}
+                    height={project.image.height}
+                    loading="lazy"
+                    className="w-full rounded-lg border border-border"
+                  />
+                )}
+                <p className="text-sm leading-6 text-muted">
+                  {project.description}
+                </p>
+                <ul className="flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <li
+                      key={tag}
+                      className="rounded-sm bg-background px-2 py-1 font-mono text-xs text-muted"
+                    >
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+                <ul className="flex flex-wrap gap-4 text-sm font-medium">
+                  {project.links.map((link) => (
+                    <li key={link.label}>
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-accent-blue underline underline-offset-4 hover:text-foreground"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                {project.embedSrc && (
+                  <div className="mt-4 w-full overflow-hidden rounded-lg border border-border">
+                    <iframe
+                      src={project.embedSrc}
+                      title={`${project.title} — Tableau dashboard`}
+                      loading="lazy"
+                      className="h-[650px] w-full border-0"
+                    />
+                  </div>
+                )}
               </div>
-            )}
-          </div>
+            </Reveal>
           );
         })}
       </div>
