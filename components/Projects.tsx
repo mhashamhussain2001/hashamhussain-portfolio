@@ -17,6 +17,32 @@ type Project = {
 
 const projects: Project[] = [
   {
+    title: "Keeper — Songwriting Voice Memo Organizer",
+    description:
+      "Finds the takes in long songwriting voice memos and files them by what you said. An Audio Spectrogram Transformer on a Modal GPU separates singing and playing from speech and silence, then Meta's Muse Spark reads the spoken commands around each take (\"file that as a verse\", \"scrap that\") and sorts takes into sections, keeping scrapped ones in a Rejected folder. Takes can be arranged on a song canvas, played through like a rough demo, and exported as a WAV or stems. Built solo for the Meta Global AI Developer Hackathon; hand-checked on one demo memo (5 of 6 takes found, 4 of 5 commands handled).",
+    tags: ["Python", "FastAPI", "Modal", "Audio Spectrogram Transformer", "Muse Spark", "Web Audio API", "JavaScript"],
+    links: [
+      {
+        label: "Live demo",
+        href: "https://mhashamhussain2001--keeper-web.us-east.modal.run",
+      },
+      {
+        label: "Demo video",
+        href: "https://www.youtube.com/watch?v=dG-uOieTylM",
+      },
+      {
+        label: "GitHub repo",
+        href: "https://github.com/mhashamhussain2001/keeper",
+      },
+    ],
+    image: {
+      src: "/images/keeper.png",
+      alt: "Keeper showing a voice memo waveform with takes labeled Verse 1, Unlabeled 1 and Bridge 1, spoken commands marked beneath, and a takes list beside the song canvas",
+      width: 1092,
+      height: 650,
+    },
+  },
+  {
     title: "shadenav — Shade-Aware Pedestrian Routing",
     description:
       "A routing tool that models where building shadows fall at any date and time, scores every street segment by sun exposure, and finds walking routes that trade a little extra distance for a lot less time in direct sun. Built on an end-to-end geospatial pipeline over the Chico State campus: OpenStreetMap street networks and building footprints, sun-position modeling, shadow-casting geometry, and shade-weighted shortest-path routing. Validated across 200 routes — a mild shade preference cuts sun exposure by roughly 20% for about 2% extra distance.",
